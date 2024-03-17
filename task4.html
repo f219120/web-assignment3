@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .scoreboard {
+            margin-bottom: 20px;
+        }
+
+        .choices button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .choices button:hover {
+            background-color: #e0e0e0;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #reset {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #ff5252;
+            color: #fff;
+        }
+
+        #reset:hover {
+            background-color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="scoreboard">
+            <p>Player: <span id="player-score">0</span></p>
+            <p>Computer: <span id="computer-score">0</span></p>
+        </div>
+        <div class="choices">
+            <button id="rock" >👊</button>
+            <button id="paper">✋</button>
+            <button id="scissors">✌️</button>
+        </div>
+        <div id="result"></div>
+        <button id="reset">Reset</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let playerScore = 0;
+            let computerScore = 0;
+
+            // Function to generate computer's choice
+            function computerPlay() {
+                const choices = ['rock', 'paper', 'scissors'];
+                const randomIndex = Math.floor(Math.random() * choices.length);
+                return choices[randomIndex];
+            }
+
+            // Function to play a round
+            function playRound(playerSelection, computerSelection) {
+                if (playerSelection === computerSelection) {
+                    return 'It\'s a tie!';
+                } else if (
+                    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+                    (playerSelection === 'paper' && computerSelection === 'rock') ||
+                    (playerSelection === 'scissors' && computerSelection === 'paper')
+                ) {
+                    playerScore++;
+                    return 'You win!';
+                } else {
+                    computerScore++;
+                    return 'You lose!';
+                }
+            }
+
+            // Update scores and display result
+            function updateScores(result) {
+                $('#player-score').text(playerScore);
+                $('#computer-score').text(computerScore);
+                $('#result').text(result);
+            }
+
+            // Event listeners for player's choices
+            $('#rock').click(function () {
+                const playerSelection = 'rock';
+                const computerSelection = computerPlay();
+                const result = playRound(playerSelection, computerSelection);
+                updateScores(result);
+            });
+
+            $('#paper').click(function () {
+                const playerSelection = 'paper';
+                const computerSelection = computerPlay();
+                const result = playRound(playerSelection, computerSelection);
+                updateScores(result);
+            });
+
+            $('#scissors').click(function () {
+                const playerSelection = 'scissors';
+                const computerSelection = computerPlay();
+                const result = playRound(playerSelection, computerSelection);
+                updateScores(result);
+            });
+
+            // Reset button functionality
+            $('#reset').click(function () {
+                playerScore = 0;
+                computerScore = 0;
+                updateScores('');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

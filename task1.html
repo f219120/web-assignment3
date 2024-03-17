@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Wajeeha's Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: #fff;
+        }
+
+        nav {
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: blueviolet;
+        }
+
+        section {
+            padding: 2rem;
+            height: 100vh;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .basic {
+            text-align: center;
+            font-size: 50px;
+        }
+
+        .second-page {
+            text-align: center;
+            font-size: 50px;
+            background-color: #020202;
+        }
+
+        #skills h2 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 40px;
+            color: #333;
+
+        }
+
+        #skills ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        #skills ul li {
+            font-size: 30px;
+            margin: 10px 0;
+        }
+
+        #skills ul li hr {
+            border: none;
+            height: 1px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="first-page">
+        <div class="basic">
+            <h1>Welcome</h1>
+            <h1>To</h1>
+            <h1 style="color: red;">Wajeeha's</h1>
+            <h1>World</h1>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="second-page">
+            <h2>Me & Myself</h2>
+            <h1>"Learning is never done without error and defeat"</h1>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <ul>
+            <li>HTML/CSS</li>
+            <hr>
+            <li>JavaScript</li>
+            <hr>
+            <li>Bootstrap</li>
+            <hr>
+            <li>C++</li>
+            <hr>
+            <li>Python</li>
+            <hr>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h1>Contact Me</h1>
+        <p>If you have any inquiries or would like to discuss potential collaborations, feel free to reach out:</p>
+        <p>You can email me at <a href="mailto:f219120@cfd.nu.edu.pk">f219120@cfd.nu.edu.pk</a> </p>
+    </section>
+</body>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".basic h1").mouseenter(function () {
+                $(this).css("color", "red");
+            });
+            $(".basic h1").mouseleave(function () {
+                $(this).css("color", "white");
+            });
+            $("#skills li").mouseover(function () {
+                $(this).css("backgroundColor", "brown");
+            });
+            $("#skills li").mouseout(function () {
+                $(this).css("backgroundColor", "black");
+            });
+        });
+    </script>
+</body>
+
+</html>

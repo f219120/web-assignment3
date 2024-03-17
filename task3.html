@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .time {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .time div {
+            height: 100px;
+            width: 100px;
+            background-color: #3498db;
+            margin: 0 40px;
+            align-items: center;
+            border-radius: 20px;
+            font-size: 36px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>This Is the Current Time</h1>
+        <div class="time">
+            <div id="hours"> 00</div>
+            <div id="min">00</div>
+            <div id="sec">00</div>
+            <div id="period">AM</div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            let period = 'AM';
+            if (hours > 12) {
+                hours -= 12;
+                period = 'PM';
+            }
+
+            $('#hours').text(hours);
+            $('#min').text(minutes);
+            $('#sec').text(seconds);
+            $('#period').text(period);
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
